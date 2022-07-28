@@ -20,5 +20,5 @@ const char* get_elem(history *hs, unsigned index)
 
 const char* print_history(history *hs)
 {
-    
+
 }
