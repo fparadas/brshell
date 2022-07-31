@@ -3,7 +3,10 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <stdbool.h>
+#include <sys/types.h>
 #include <termios.h>
+#include <unistd.h>
+#include <signal.h>
 
 
 /* Data Structures based on GNU implementation of a shell */
