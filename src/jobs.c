@@ -1,3 +1,6 @@
+#define _POSIX_SOURCE
+#define WAIT_ANY -1
+
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <termios.h>
