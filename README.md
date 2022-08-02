@@ -59,3 +59,5 @@ https://brennan.io/2015/01/16/write-a-shell-in-c/;
 https://www.youtube.com/watch?v=spD11nnLsLE
 
 https://www.gnu.org/software/libc/manual/html_node/Implementing-a-Shell.html
+
+http://pokristensson.com/strmap.html

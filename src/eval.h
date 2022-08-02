@@ -9,6 +9,8 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include "parse.h"
+#include "builtins.h"
+#include "profile.h"
 
 #define TOK_DELIM " \t\r\n\a"
 #define PIPE_DELIM "|"

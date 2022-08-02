@@ -75,6 +75,7 @@ job* create_job(char* cmdline)
     for(int i = (n_commands - 1); i >= 0; i--) {
         command = commands[i];
         command_tokens = words(command, TOK_DELIM);
+        command_tokens[0] = alias(command_tokens[0]);
         p = make_process(command_tokens, last);
         last = p; 
     }
@@ -82,17 +83,35 @@ job* create_job(char* cmdline)
     j->first_process = p; /* set the current proccess as the first*/
     j->foreground = foreground;
     j->next = NULL;
+    j->command = cmdline;
     return j;
 }
 
 void eval(char* line)
 {
-    job* j;
+    char **commands;
 
-    j = create_job(line);
+    commands = words(line, TOK_DELIM);
+    commands[0] = alias(commands[0]);
+    
+    if(!builtin_command(commands)) {
+    
+        job* j;
+        
+        j = create_job(line);
 
-    first_job = j;
+        if (!first_job) {
+            first_job = j;
+        } else {
+            job* jnext = first_job;
+            while (jnext->next)
+                jnext = jnext->next;
+            
+            jnext->next = j;
+        }
 
-    launch_job(j, j->foreground);
-    do_job_notification();
+        launch_job(j, j->foreground);
+        do_job_notification();
+
+    }
 }
